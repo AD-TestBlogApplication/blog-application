@@ -35,6 +35,8 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Database Cleaner is a set of gems containing strategies for cleaning your database in Ruby.
   gem 'database_cleaner'
+  # factory_bot is a fixtures replacement with a straightforward definition syntax. Read more: https://github.com/thoughtbot/factory_bot_rails
+  gem 'factory_bot_rails'
   # The RSpec testing framework as a drop-in alternative to its default testing framework, Minitest. Read more: https://github.com/rspec/rspec-rails
   gem 'rspec-rails'
 end
