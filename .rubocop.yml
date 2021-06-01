@@ -1,5 +1,11 @@
 AllCops:
   NewCops: enable
+  Exclude:
+    - 'db/**/*'
 
 Style/Documentation:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*'
