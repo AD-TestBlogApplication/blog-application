@@ -33,6 +33,14 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # Database Cleaner is a set of gems containing strategies for cleaning your database in Ruby.
+  gem 'database_cleaner'
+  # factory_bot is a fixtures replacement with a straightforward definition syntax. Read more: https://github.com/thoughtbot/factory_bot_rails
+  gem 'factory_bot_rails'
+  # Faker generates fake data. Read more: https://github.com/faker-ruby/faker
+  gem 'faker'
+  # The RSpec testing framework as a drop-in alternative to its default testing framework, Minitest. Read more: https://github.com/rspec/rspec-rails
+  gem 'rspec-rails'
 end
 
 group :development do
