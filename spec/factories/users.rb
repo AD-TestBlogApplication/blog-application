@@ -1,0 +1,12 @@
+# frozen_string_literal: true
+
+FactoryBot.define do
+  factory :user do
+    email { Faker::Internet.unique.email }
+    password { '123456' }
+  end
+
+  factory :admin_user, parent: :user do
+    role { :admin }
+  end
+end
