@@ -37,6 +37,8 @@ group :development, :test do
   gem 'database_cleaner'
   # factory_bot is a fixtures replacement with a straightforward definition syntax. Read more: https://github.com/thoughtbot/factory_bot_rails
   gem 'factory_bot_rails'
+  # Faker generates fake data. Read more: https://github.com/faker-ruby/faker
+  gem 'faker'
   # The RSpec testing framework as a drop-in alternative to its default testing framework, Minitest. Read more: https://github.com/rspec/rspec-rails
   gem 'rspec-rails'
 end
