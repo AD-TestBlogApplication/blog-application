@@ -1,0 +1,15 @@
+<div class="ui borderless main menu">
+  <div class="ui text container">
+    <%= link_to root_path, class: 'header item' do %>
+      <%= image_tag 'logo.svg', class: 'logo' %>
+    <% end %>
+    <a href="#" class="item">Feed</a>
+    <div class="floated right item">
+    <% if current_user %>
+        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+    <% else %>
+        <%= link_to 'Sign in', new_user_session_path, class: 'ui primary button' %>
+    <% end %>
+    </div>
+  </div>
+</div>
