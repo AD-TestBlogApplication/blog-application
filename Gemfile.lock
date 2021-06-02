@@ -194,6 +194,8 @@ GEM
     semantic-ui-sass (2.4.3.0)
       sassc
     semantic_range (3.0.0)
+    shoulda-matchers (4.5.1)
+      activesupport (>= 4.2.0)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -248,6 +250,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (>= 6)
   semantic-ui-sass
+  shoulda-matchers
   spring
   strong_migrations
   turbolinks (~> 5)
