@@ -43,6 +43,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   # Faker generates fake data. Read more: https://github.com/faker-ruby/faker
   gem 'faker'
+  # Adds step-by-step debugging and stack navigation capabilities to pry using byebug.
+  gem 'pry-byebug'
   # The RSpec testing framework as a drop-in alternative to its default testing framework, Minitest. Read more: https://github.com/rspec/rspec-rails
   gem 'rspec-rails'
 end
