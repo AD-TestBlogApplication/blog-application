@@ -7,4 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum role: { client: 0, admin: 1 }
+
+  validates :first_name, :last_name, presence: true, length: { maximum: 50 }
 end
