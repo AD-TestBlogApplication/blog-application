@@ -11,8 +11,16 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="ui main text container">
+      <h1 class="ui header">Blog application</h1>
+      <p>This test application is developed by Alexander Demenchenko from iTechArt Group</p>
+    </div>
+
+    <% unless devise_controller? %>
+      <%= render partial: 'layouts/partials/navigation' %>
+      <div class="ui text container"><%= semantic_flash %></div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
