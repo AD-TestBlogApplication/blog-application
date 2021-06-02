@@ -47,6 +47,8 @@ group :development, :test do
   gem 'pry-byebug'
   # The RSpec testing framework as a drop-in alternative to its default testing framework, Minitest. Read more: https://github.com/rspec/rspec-rails
   gem 'rspec-rails'
+  # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners to test common Rails functionality. Read more: https://github.com/thoughtbot/shoulda-matchers
+  gem 'shoulda-matchers'
 end
 
 group :development do
