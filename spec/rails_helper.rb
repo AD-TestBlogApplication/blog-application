@@ -74,3 +74,12 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning { example.run }
   end
 end
+
+# Shoulda Matchers provides compatible one-liners to test common Rails functionality.
+# Read more: https://github.com/thoughtbot/shoulda-matchers#rails-apps
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end

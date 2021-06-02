@@ -14,17 +14,29 @@
 
       <div class="field">
         <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email' %>
+      </div>
+
+      <div class="field">
+        <label>Name</label>
+        <div class="two fields">
+          <div class="field">
+            <%= f.email_field :first_name, placeholder: 'First name' %>
+          </div>
+          <div class="field">
+            <%= f.email_field :last_name, placeholder: 'Last name' %>
+          </div>
+        </div>
       </div>
 
       <div class="field">
         <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, autocomplete: 'new-password', placeholder: 'Password' %>
       </div>
 
       <div class="field">
         <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, autocomplete: 'new-password', placeholder: 'Password confirmation' %>
       </div>
 
       <div class="actions">
