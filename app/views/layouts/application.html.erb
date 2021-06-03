@@ -24,5 +24,7 @@
     <div class="ui text container">
       <%= yield %>
     </div>
+
+    <%= render partial: 'layouts/partials/footer' unless devise_controller? %>
   </body>
 </html>

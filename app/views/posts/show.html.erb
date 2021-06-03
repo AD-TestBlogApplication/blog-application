@@ -1,0 +1,28 @@
+<%= render partial: 'header' %>
+
+<%= link_to posts_path, class: 'ui labeled icon button' do %>
+  <i class="arrow left icon"></i>
+  Back
+<% end %>
+<% if current_user == @post.user %>
+  <%= link_to edit_post_path(@post), class: 'ui labeled icon button' do %>
+    <i class="edit icon"></i>
+    Edit
+  <% end %>
+  <%= link_to post_path(@post), class: 'ui labeled icon button', method: :delete do %>
+    <i class="trash alternate outline icon"></i>
+    Delete
+  <% end %>
+<% end %>
+
+<% present @post do |post| %>
+  <div class="ui card fluid <%= random_color %>">
+    <div class="content">
+      <div class="right floated meta"><%= post.created_at_about %></div>
+      <p><div class="header"><%= post.user.first_name %></div></p>
+      <%= link_to post_path(post), class: 'description' do %>
+        <p><%= post.content %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

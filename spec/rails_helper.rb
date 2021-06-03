@@ -32,6 +32,9 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
 RSpec.configure do |config|
   # Including Factory bot syntax methods. Read more: https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#rspec
   config.include FactoryBot::Syntax::Methods
@@ -73,6 +76,8 @@ RSpec.configure do |config|
   config.around(:each) do |example|
     DatabaseCleaner.cleaning { example.run }
   end
+
+  config.include RequestSpecHelper, type: :request
 end
 
 # Shoulda Matchers provides compatible one-liners to test common Rails functionality.

@@ -1,16 +1,1 @@
-<% if resource.errors.any? %>
-  <div id="error_explanation">
-    <div class="ui icon negative message">
-      <i class="exclamation triangle icon"></i>
-      <i class="icon close"></i>
-      <div class="content">
-        <ul class="list">
-          <% resource.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <br>
-<% end %>
+<%= render_record_errors resource %>

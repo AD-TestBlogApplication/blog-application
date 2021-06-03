@@ -1,0 +1,12 @@
+<%= form_for post, html: { class: 'ui form' } do |f| %>
+  <%= render_record_errors post %>
+
+  <div class="field">
+    <%= f.text_area :content, rows: 3 %>
+  </div>
+
+  <%= button_tag class: 'ui labeled icon button' do %>
+    <i class="comment icon"></i>
+    Publish
+  <% end %>
+<% end %>

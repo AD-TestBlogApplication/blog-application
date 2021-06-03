@@ -45,6 +45,8 @@ group :development, :test do
   gem 'faker'
   # Adds step-by-step debugging and stack navigation capabilities to pry using byebug.
   gem 'pry-byebug'
+  # This gem brings back assigns to controller tests as well as assert_template to both controller and integration tests
+  gem 'rails-controller-testing'
   # The RSpec testing framework as a drop-in alternative to its default testing framework, Minitest. Read more: https://github.com/rspec/rspec-rails
   gem 'rspec-rails'
   # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners to test common Rails functionality. Read more: https://github.com/thoughtbot/shoulda-matchers
@@ -54,6 +56,8 @@ group :development, :test do
 end
 
 group :development do
+  # The Bullet gem is designed to help you reducing the number of queries it makes. Read more: https://github.com/flyerhzm/bullet
+  gem 'bullet'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
