@@ -1,0 +1,15 @@
+<%= render partial: 'header' %>
+
+<%= link_to posts_path, class: 'ui labeled icon button' do %>
+  <i class="arrow left icon"></i>
+  Back
+<% end %>
+
+<div class="ui card fluid <%= random_color %>">
+  <div class="content">
+    <p><div class="header">New post</div></p>
+    <div class="description">
+      <%= render partial: 'form', locals: { post: @post } %>
+    </div>
+  </div>
+</div>

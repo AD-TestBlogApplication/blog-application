@@ -12,13 +12,10 @@ document.addEventListener("turbolinks:load", function() {
   ;
 
   // fix main menu to page on passing
-  $('.main.menu').visibility({
-    type: 'fixed'
-  });
-
-  $('.overlay').visibility({
+  $('#main-navigation').visibility({
     type: 'fixed',
-    offset: 80
+    once: true,
+    initialCheck: false
   });
 
   // lazy load images

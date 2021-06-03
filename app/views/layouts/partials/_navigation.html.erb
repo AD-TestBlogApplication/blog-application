@@ -1,9 +1,9 @@
-<div class="ui borderless main menu">
+<div class="ui borderless main menu" id='main-navigation'>
   <div class="ui text container">
     <%= link_to root_path, class: 'header item' do %>
       <%= image_tag 'logo.svg', class: 'logo' %>
     <% end %>
-    <a href="#" class="item">Feed</a>
+    <%= link_to 'Posts', posts_path, class: 'item' %>
     <% if current_user %>
       <div class="ui right floated dropdown item">
         <i class="user icon"></i>

@@ -1,0 +1,10 @@
+<h2 class="ui center aligned icon header">
+  <i class="circular comments icon <%= random_color %>"></i>
+  Posts
+  <% unless current_user %>
+    <div class="sub header">
+      In order to create a post you need to <%= link_to 'log in', new_user_session_path %> into your account
+    </div>
+  <% end %>
+</h2>
+<br>
