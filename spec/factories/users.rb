@@ -11,4 +11,10 @@ FactoryBot.define do
   factory :admin_user, parent: :user do
     role { :admin }
   end
+
+  trait :with_posts do
+    after(:create) do |user|
+      create_list :post, 3, user: user
+    end
+  end
 end
