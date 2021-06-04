@@ -6,5 +6,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :posts
+  resources :posts do
+    resources :comments, only: %i[create], module: :posts
+  end
+
+  resources :comments, only: %i[edit update destroy]
 end

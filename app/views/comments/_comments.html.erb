@@ -1,0 +1,4 @@
+<div class="ui large fluid comments">
+  <%= render commentable.comments.includes(:user) %>
+  <%= render partial: 'comments/form', locals: { commentable: commentable, comment: Comment.new } %>
+</div>

@@ -3,22 +3,47 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :request do
-  describe 'GET index' do
-    subject { get '/posts' }
-
+  shared_examples 'ok response' do
     it 'has a 200 status code' do
       subject
       expect(response.status).to eq(200)
     end
   end
 
-  describe 'GET new' do
-    subject { get '/posts/new' }
-
+  shared_examples 'redirect' do
     it 'has a 302 status code' do
       subject
       expect(response.status).to eq(302)
     end
+  end
+
+  shared_examples 'redirect to sign in for not signed in users' do
+    it_behaves_like 'redirect'
+
+    it 'redirects to sign in page' do
+      expect(subject).to redirect_to '/users/sign_in'
+    end
+  end
+
+  shared_examples 'renders template with success status' do |template|
+    it_behaves_like 'ok response'
+
+    it "renders #{template} post template" do
+      subject
+      expect(response).to render_template(template)
+    end
+  end
+
+  describe 'GET index' do
+    subject { get '/posts' }
+
+    it_behaves_like 'ok response'
+  end
+
+  describe 'GET new' do
+    subject { get '/posts/new' }
+
+    it_behaves_like 'redirect'
 
     it 'redirects to sign in page' do
       expect(subject).to redirect_to '/users/sign_in'
@@ -27,24 +52,14 @@ RSpec.describe PostsController, type: :request do
     context 'as signed in user' do
       before { sign_in create(:user) }
 
-      it 'has a 200 status code' do
-        subject
-        expect(response.status).to eq(200)
-      end
+      it_behaves_like 'ok response'
     end
   end
 
   describe 'POST create' do
     subject { post '/posts' }
 
-    it 'has a 302 status code' do
-      subject
-      expect(response.status).to eq(302)
-    end
-
-    it 'redirects to sign in page' do
-      expect(subject).to redirect_to '/users/sign_in'
-    end
+    it_behaves_like 'redirect to sign in for not signed in users'
 
     it 'does not create post' do
       expect { subject }.not_to change(Post, :count)
@@ -87,10 +102,7 @@ RSpec.describe PostsController, type: :request do
           )
         end
 
-        it 'has a 302 status code' do
-          subject
-          expect(response.status).to eq(302)
-        end
+        it_behaves_like 'redirect'
 
         it 'redirects to post page' do
           expect(subject).to redirect_to "/posts/#{assigns[:post].id}"
@@ -100,15 +112,7 @@ RSpec.describe PostsController, type: :request do
       context 'with invalid params' do
         let(:params) { { post: { content: '' } } }
 
-        it 'has a 200 status code' do
-          subject
-          expect(response.status).to eq(200)
-        end
-
-        it 'renders new post template' do
-          subject
-          expect(response).to render_template(:new)
-        end
+        it_behaves_like 'renders template with success status', :new
 
         it 'does not create post' do
           expect { subject }.not_to change(Post, :count)
@@ -122,10 +126,7 @@ RSpec.describe PostsController, type: :request do
 
     let(:post) { create :post }
 
-    it 'has a 200 status code' do
-      subject
-      expect(response.status).to eq(200)
-    end
+    it_behaves_like 'ok response'
   end
 
   describe 'GET edit' do
@@ -133,14 +134,7 @@ RSpec.describe PostsController, type: :request do
 
     let(:post) { create :post }
 
-    it 'has a 302 status code' do
-      subject
-      expect(response.status).to eq(302)
-    end
-
-    it 'redirects to sign in page' do
-      expect(subject).to redirect_to '/users/sign_in'
-    end
+    it_behaves_like 'redirect to sign in for not signed in users'
 
     context 'as signed in user and an owner of a post' do
       before { sign_in current_user }
@@ -148,10 +142,7 @@ RSpec.describe PostsController, type: :request do
       let(:current_user) { create(:user) }
       let(:post) { create :post, user: current_user }
 
-      it 'has a 200 status code' do
-        subject
-        expect(response.status).to eq(200)
-      end
+      it_behaves_like 'ok response'
     end
 
     context 'as signed in user but not an owner of a post' do
@@ -175,14 +166,7 @@ RSpec.describe PostsController, type: :request do
 
     let(:post) { create :post }
 
-    it 'has a 302 status code' do
-      subject
-      expect(response.status).to eq(302)
-    end
-
-    it 'redirects to sign in page' do
-      expect(subject).to redirect_to '/users/sign_in'
-    end
+    it_behaves_like 'redirect to sign in for not signed in users'
 
     context 'as signed in user and an owner of a post' do
       subject { put "/posts/#{post.id}", params: params }
@@ -214,10 +198,7 @@ RSpec.describe PostsController, type: :request do
           )
         end
 
-        it 'has a 302 status code' do
-          subject
-          expect(response.status).to eq(302)
-        end
+        it_behaves_like 'redirect'
 
         it 'redirects to post page' do
           expect(subject).to redirect_to "/posts/#{assigns[:post].id}"
@@ -227,15 +208,7 @@ RSpec.describe PostsController, type: :request do
       context 'with invalid params' do
         let(:params) { { post: { content: '' } } }
 
-        it 'has a 200 status code' do
-          subject
-          expect(response.status).to eq(200)
-        end
-
-        it 'renders edit post template' do
-          subject
-          expect(response).to render_template(:edit)
-        end
+        it_behaves_like 'renders template with success status', :edit
 
         it 'does not update post' do
           expect { subject }.not_to change(post, :updated_at)
@@ -264,14 +237,7 @@ RSpec.describe PostsController, type: :request do
 
     let(:post) { create :post }
 
-    it 'has a 302 status code' do
-      subject
-      expect(response.status).to eq(302)
-    end
-
-    it 'redirects to sign in page' do
-      expect(subject).to redirect_to '/users/sign_in'
-    end
+    it_behaves_like 'redirect to sign in for not signed in users'
 
     context 'as signed in user and an owner of a post' do
       before { sign_in current_user }
@@ -283,10 +249,7 @@ RSpec.describe PostsController, type: :request do
         expect { subject }.to change(Post, :count).by(-1)
       end
 
-      it 'has a 302 status code' do
-        subject
-        expect(response.status).to eq(302)
-      end
+      it_behaves_like 'redirect'
 
       it 'redirects to posts page' do
         expect(subject).to redirect_to '/posts'

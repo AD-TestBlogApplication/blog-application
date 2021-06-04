@@ -15,14 +15,5 @@
   <% end %>
 <% end %>
 
-<% present @post do |post| %>
-  <div class="ui card fluid <%= random_color %>">
-    <div class="content">
-      <div class="right floated meta"><%= post.created_at_about %></div>
-      <p><div class="header"><%= post.user.first_name %></div></p>
-      <%= link_to post_path(post), class: 'description' do %>
-        <p><%= post.content %></p>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<%= render @post %>
+<%= render partial: 'comments/comments', locals: { commentable: @post } %>

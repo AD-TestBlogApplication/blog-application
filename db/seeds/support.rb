@@ -2,3 +2,4 @@
 
 require_relative 'user_seeder'
 require_relative 'post_seeder'
+require_relative 'comment_seeder'

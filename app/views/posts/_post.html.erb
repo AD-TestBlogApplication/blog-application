@@ -7,5 +7,9 @@
         <p><%= post.content %></p>
       <% end %>
     </div>
+    <div class="content">
+      <i class="comment icon"></i>
+      <%= pluralize(post.comments.count, 'comment') %>
+    </div>
   </div>
 <% end %>

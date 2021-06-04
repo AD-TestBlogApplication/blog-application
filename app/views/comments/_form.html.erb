@@ -1,0 +1,11 @@
+<%= form_for [commentable, comment], html: { class: 'ui reply form' } do |form| %>
+  <%= render_record_errors comment %>
+
+  <div class="field">
+    <%= form.text_area :content, placeholder: 'Say something...', rows: 3 %>
+  </div>
+  <%= button_tag class: 'ui labeled icon button' do %>
+    <i class="icon edit"></i>
+    Add Comment
+  <% end %>
+<% end %>
