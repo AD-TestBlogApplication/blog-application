@@ -1,0 +1,19 @@
+<%= link_to @comment.commentable, class: 'ui labeled icon button' do %>
+  <i class="arrow left icon"></i>
+  Back
+<% end %>
+
+<br>
+<br>
+
+<%= form_for @comment, html: { class: 'ui reply form' } do |form| %>
+  <%= render_record_errors @comment %>
+
+  <div class="field">
+    <%= form.text_area :content, placeholder: 'Say something...', rows: 3 %>
+  </div>
+  <%= button_tag class: 'ui labeled icon button' do %>
+    <i class="icon edit"></i>
+    Edit Comment
+  <% end %>
+<% end %>

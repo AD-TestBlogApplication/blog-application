@@ -9,6 +9,7 @@ class User < ApplicationRecord
   enum role: { client: 0, admin: 1 }
 
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :first_name, :last_name, presence: true, length: { maximum: 50 }
 end

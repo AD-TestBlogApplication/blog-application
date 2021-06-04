@@ -6,3 +6,4 @@ return if Rails.env.production?
 
 Seeds::UserSeeder.seed
 Seeds::PostSeeder.seed
+Seeds::CommentSeeder.seed
