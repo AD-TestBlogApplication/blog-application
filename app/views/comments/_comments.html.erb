@@ -1,3 +1,7 @@
+<h4 class="ui horizontal divider header">
+  <i class="comments outline icon"></i>
+  <%= pluralize(commentable.comments.count, 'Comment') %>
+</h4>
 <div class="ui large fluid comments">
   <%= render commentable.comments.includes(:user) %>
   <%= render partial: 'comments/form', locals: { commentable: commentable, comment: Comment.new } %>

@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :posts do
-    resources :comments, only: %i[create], module: :posts
+    scope module: :posts do
+      resources :comments, only: %i[create]
+      resources :emote_reactions, only: %i[create]
+    end
   end
 
-  resources :comments, only: %i[edit update destroy]
+  resources :comments, only: %i[edit update destroy] do
+    resources :emote_reactions, only: %i[create], module: :comments
+  end
 end

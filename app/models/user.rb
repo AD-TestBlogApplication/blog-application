@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :emote_reactions, dependent: :destroy
 
   validates :first_name, :last_name, presence: true, length: { maximum: 50 }
 end

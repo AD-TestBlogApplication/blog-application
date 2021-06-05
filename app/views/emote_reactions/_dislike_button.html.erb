@@ -1,0 +1,26 @@
+<% already_disliked = emote_reacted?(emotionable, user: current_user, kind: :dislike) %>
+<% dislikes_count = emotionable.emote_reactions.dislike.count %>
+
+<% case type.to_sym %>
+<% when :button %>
+  <%= button_to "#{url_for emotionable}/emote_reactions", {
+    method: :post,
+    params: { emote_reaction: { kind: :dislike } },
+    class: 'ui left labeled button'
+  } do %>
+    <span class="ui basic label"><%= dislikes_count %></span>
+    <div class="ui icon button <%= 'active red' if already_disliked %>">
+      <i class="thumbs down outline icon"></i>
+    </div>
+  <% end %>
+<% when :link %>
+  <%= button_to "#{url_for emotionable}/emote_reactions", {
+    method: :post,
+    params: { emote_reaction: { kind: :dislike } },
+    class: "ui button basic link #{'active red' if already_disliked }",
+    form_class: 'ui form-button-to inline'
+  } do %>
+    <i class="thumbs down outline icon"></i>
+    <%= dislikes_count %>
+  <% end %>
+<% end %>

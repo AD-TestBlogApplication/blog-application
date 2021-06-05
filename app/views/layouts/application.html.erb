@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('logo.svg') %>
   </head>
 
   <body>
@@ -19,6 +20,7 @@
     <% unless devise_controller? %>
       <%= render partial: 'layouts/partials/navigation' %>
       <div class="ui text container"><%= semantic_flash %></div>
+      <br>
     <% end %>
 
     <div class="ui text container">

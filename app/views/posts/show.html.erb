@@ -4,7 +4,7 @@
   <i class="arrow left icon"></i>
   Back
 <% end %>
-<% if current_user == @post.user %>
+<% if owner?(@post) %>
   <%= link_to edit_post_path(@post), class: 'ui labeled icon button' do %>
     <i class="edit icon"></i>
     Edit
@@ -16,4 +16,5 @@
 <% end %>
 
 <%= render @post %>
+<%= render partial: 'emote_reactions/likes_bar', locals: { emotionable: @post } %>
 <%= render partial: 'comments/comments', locals: { commentable: @post } %>

@@ -53,3 +53,36 @@ body {
 .ui.comments.fluid {
   max-width: 100%;
 }
+
+.ui.progress.middle.aligned {
+  margin: 0
+}
+
+.ui.grid .column.right.aligned .ui.labeled.button {
+  margin-right: 0;
+}
+
+button.ui.labeled.button .ui.label {
+  height: 36px
+}
+
+.ui.progress .bar.without-animation::after {
+  animation: none;
+}
+
+.ui.button.basic.link,
+.ui.button.basic.link.active,
+.ui.button.basic.link:hover,
+.ui.button.basic.link:focus {
+  box-shadow: 0 0 !important;
+  margin: 0em 0.75em 0em 0em;
+  padding: 0;
+}
+
+.ui.button.basic.link.active {
+  background: none !important;
+}
+
+.ui.form-button-to.inline {
+  display: inline-block;
+}
