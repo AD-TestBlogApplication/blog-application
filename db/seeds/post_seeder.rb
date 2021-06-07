@@ -2,7 +2,7 @@
 
 module Seeds
   class PostSeeder
-    FAKE_POSTS_PER_USER_COUNT = 10
+    FAKE_POSTS_PER_USER_COUNT = 3
     CONTENT_SENTENCES_RANGE = 5..30
 
     class << self

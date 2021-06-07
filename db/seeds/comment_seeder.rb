@@ -10,7 +10,7 @@ module Seeds
         fake_comments = []
 
         Post.pluck(:id, :created_at).each do |post_id, post_created_at|
-          rand(0..MAX_FAKE_COMMENTS_PER_POST_COUNT ).times do
+          rand(1..MAX_FAKE_COMMENTS_PER_POST_COUNT ).times do
             fake_comments << {
               user_id: User.select(:id).order('RAND()').first.id,
               commentable_type: Post,

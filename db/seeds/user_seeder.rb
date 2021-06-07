@@ -4,7 +4,7 @@ module Seeds
   class UserSeeder
     DEFAULT_PASSWORD = '123456'
     DEFAULT_LAST_NAME = 'Tuser'
-    FAKE_USERS_COUNT = 100
+    FAKE_USERS_COUNT = 10
 
     class << self
       def seed
