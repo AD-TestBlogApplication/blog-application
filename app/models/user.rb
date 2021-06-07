@@ -13,4 +13,8 @@ class User < ApplicationRecord
   has_many :emote_reactions, dependent: :destroy
 
   validates :first_name, :last_name, presence: true, length: { maximum: 50 }
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

@@ -1,0 +1,10 @@
+<%= render partial: 'users/header' %>
+
+<% if current_user %>
+  <%= link_to new_post_path, class: 'ui labeled icon button' do %>
+    <i class="comment icon"></i>
+    Write a post
+  <% end %>
+<% end %>
+
+<%= render partial: 'posts/post', collection: @posts %>

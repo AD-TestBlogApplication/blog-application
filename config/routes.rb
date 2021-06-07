@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :users, only: [] do
+    resources :posts, only: %i[index], module: :users
+  end
+
   resources :posts do
     scope module: :posts do
       resources :comments, only: %i[create]
