@@ -1,0 +1,26 @@
+<% already_liked = emote_reacted?(emotionable, user: current_user, kind: :like) %>
+<% likes_count = emotionable.emote_reactions.like.count %>
+
+<% case type.to_sym %>
+<% when :button %>
+  <%= button_to "#{url_for emotionable}/emote_reactions", {
+    method: :post,
+    params: { emote_reaction: { kind: :like } },
+    class: 'ui left labeled button'
+  } do %>
+    <span class="ui basic label"><%= likes_count %></span>
+    <div class="ui icon button <%= 'active green' if already_liked %>">
+      <i class="thumbs up outline icon"></i>
+    </div>
+  <% end %>
+<% when :link %>
+  <%= button_to "#{url_for emotionable}/emote_reactions", {
+    method: :post,
+    params: { emote_reaction: { kind: :like } },
+    class: "ui button basic link #{'active green' if already_liked }",
+    form_class: 'ui form-button-to inline'
+  } do %>
+    <i class="thumbs up outline icon"></i>
+    <%= likes_count %>
+  <% end %>
+<% end %>

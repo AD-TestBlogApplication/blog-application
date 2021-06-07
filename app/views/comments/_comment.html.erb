@@ -3,21 +3,21 @@
     <a class="author"><%= comment.user.first_name %></a>
     <div class="metadata">
       <div class="date"><%= time_ago_in_words(comment.created_at) %></div>
+      <% if owner?(comment) %>
+        <%= link_to edit_comment_path(comment), class: 'ui basic icon button link small teal' do %>
+          <i class="icon edit"></i>
+        <% end %>
+        <%= link_to comment_path(comment), class: 'ui basic icon button link small red', method: :delete do %>
+          <i class="trash alternate outline icon"></i>
+        <% end %>
+      <% end %>
     </div>
     <div class="text">
       <%= comment.content %>
     </div>
-    <% if current_user == comment.user %>
-      <div class="actions">
-        <%= link_to edit_comment_path(comment) do %>
-          <i class="icon edit"></i>
-          Edit
-        <% end %>
-        <%= link_to comment_path(comment), method: :delete do %>
-          <i class="trash alternate outline icon"></i>
-          Delete
-        <% end %>
-      </div>
-    <% end %>
+    <div class="actions">
+      <%= like_button comment, type: :link %>
+      <%= dislike_button comment, type: :link %>
+    </div>
   </div>
 </div>

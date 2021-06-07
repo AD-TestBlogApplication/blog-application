@@ -9,3 +9,4 @@ Style/Documentation:
 Metrics/BlockLength:
   Exclude:
     - 'config/environments/*'
+    - 'spec/**/*'

@@ -38,4 +38,6 @@ document.addEventListener("turbolinks:load", function() {
       $(this.dataset.modalTarget).modal('show')
     });
   });
+
+  $('.ui.progress').progress();
 });

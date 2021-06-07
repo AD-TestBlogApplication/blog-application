@@ -1,0 +1,16 @@
+<% likes_count = emotionable.emote_reactions.like.count %>
+<% dislikes_count = emotionable.emote_reactions.dislike.count %>
+
+<div class="ui middle aligned grid">
+  <div class="three wide column">
+    <%= like_button emotionable %>
+  </div>
+  <div class="ten wide column">
+    <div class="ui tiny progress indicating middle aligned without-animation" data-value="<%= likes_count %>" data-total="<%= likes_count + dislikes_count %>" showActivity=false>
+      <div class="bar without-animation"></div>
+    </div>
+  </div>
+  <div class="three wide column right aligned">
+    <%= dislike_button emotionable %>
+  </div>
+</div>

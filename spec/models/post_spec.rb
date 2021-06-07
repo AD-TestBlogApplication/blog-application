@@ -6,6 +6,7 @@ RSpec.describe Post, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to have_many(:emote_reactions).dependent(:destroy) }
   end
 
   describe 'validations' do

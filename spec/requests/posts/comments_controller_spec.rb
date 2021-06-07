@@ -76,7 +76,7 @@ module Posts
           end
 
           it 'saves comment to post' do
-            expect { subject }.to change { current_user.comments.count }.by(1)
+            expect { subject }.to change { post.comments.count }.by(1)
           end
 
           it 'saves comment parameters' do
