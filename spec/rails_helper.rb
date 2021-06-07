@@ -78,6 +78,7 @@ RSpec.configure do |config|
   end
 
   config.include RequestSpecHelper, type: :request
+  config.include API::AuthSpecHelper
 end
 
 # Shoulda Matchers provides compatible one-liners to test common Rails functionality.
