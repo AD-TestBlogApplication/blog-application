@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   before_action :set_current_user_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.includes(:user).order(created_at: :desc).limit(100)
+    @posts = Post.includes(:user).order(created_at: :desc)
   end
 
   def new

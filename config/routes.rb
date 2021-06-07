@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   namespace :api, defaults: { format: :json } do
+    resources :posts, only: %i[index create show update destroy]
     resources :users, only: [] do
       collection do
         post :sign_up, to: 'users#create'
