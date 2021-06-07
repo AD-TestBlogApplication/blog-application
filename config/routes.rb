@@ -4,6 +4,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'home#index'
 
+  namespace :api, defaults: { format: :json } do
+    resources :users, only: [] do
+      collection do
+        post :sign_up, to: 'users#create'
+        post :sign_in, to: 'users#authenticate'
+      end
+    end
+  end
+
   devise_for :users
 
   resources :users, only: [] do
