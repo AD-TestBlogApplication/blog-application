@@ -56,6 +56,19 @@ module API
           end
         end
 
+        context 'when user is not found' do
+          let(:header) { { 'Authorization' => token_generator('invalid_id') } }
+          subject(:request_obj) { described_class.new(header) }
+
+          it 'raises ExceptionHandler::ExpiredSignature error' do
+            expect { request_obj.call }
+              .to raise_error(
+                ExceptionHandler::InvalidToken,
+                /Invalid token Couldn't find User with 'id'=invalid_id/
+              )
+          end
+        end
+
         context 'fake token' do
           let(:header) { { 'Authorization' => 'foobar' } }
           subject(:invalid_request_obj) { described_class.new(header) }

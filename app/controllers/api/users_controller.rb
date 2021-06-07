@@ -2,6 +2,8 @@
 
 module API
   class UsersController < BaseController
+    skip_before_action :authorize_request, only: %i[authenticate create]
+
     # return auth token once user is authenticated
     def authenticate
       auth_token = AuthenticateUser.new(
