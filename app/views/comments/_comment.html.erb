@@ -1,6 +1,6 @@
 <div class="comment">
   <div class="content">
-    <a class="author"><%= comment.user.first_name %></a>
+    <a class="author"><%= comment.user.full_name %></a>
     <div class="metadata">
       <div class="date"><%= time_ago_in_words(comment.created_at) %></div>
       <% if owner?(comment) %>
