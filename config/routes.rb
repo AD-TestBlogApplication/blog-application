@@ -12,6 +12,13 @@ Rails.application.routes.draw do
         post :sign_in, to: 'users#authenticate'
       end
     end
+
+    resources :posts, only: %i[index create show update destroy] do
+      scope module: :posts do
+        resources :comments, only: %i[create]
+      end
+    end
+    resources :comments, only: %i[update destroy]
   end
 
   devise_for :users
