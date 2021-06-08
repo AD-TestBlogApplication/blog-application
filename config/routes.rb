@@ -10,6 +10,8 @@ Rails.application.routes.draw do
         post :sign_up, to: 'users#create'
         post :sign_in, to: 'users#authenticate'
       end
+
+      resources :posts, only: %i[index], module: :users
     end
 
     resources :posts, only: %i[index create show update destroy] do
