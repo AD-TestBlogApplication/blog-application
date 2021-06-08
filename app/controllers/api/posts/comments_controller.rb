@@ -3,6 +3,8 @@
 module API
   module Posts
     class CommentsController < BaseController
+      before_action :set_post, only: %i[create]
+
       def create
         comment = @post.comments.build(comment_params)
         comment.user = current_user
@@ -13,6 +15,10 @@ module API
       end
 
       private
+
+      def set_post
+        @post = ::Post.find(params[:post_id])
+      end
 
       def comment_params
         params.permit(:content)
