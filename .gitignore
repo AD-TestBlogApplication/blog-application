@@ -26,7 +26,8 @@
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+# This is test application. We don't have to hide master.key in this case
+# /config/master.key
 
 /public/packs
 /public/packs-test
