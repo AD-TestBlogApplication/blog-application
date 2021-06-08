@@ -7,6 +7,8 @@ ruby '3.0.0'
 
 # Devise is a flexible authentication solution for Rails based on Warden. Read more: https://github.com/heartcombo/devise
 gem 'devise'
+# A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
+gem 'jwt'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 # Use mysql as the database for Active Record
